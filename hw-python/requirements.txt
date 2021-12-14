@@ -1,0 +1,4 @@
+mdclogpy==1.1.4
+requests==2.26.0
+ricxappframe==2.3.0
+setuptools==57.0.0

@@ -1,0 +1,6 @@
+LD_LIBRARY_PATH=/usr/local/lib/:/usr/local/lib64
+RMR_SEED_RT=/home/blue/×ÀÃæ/hw-python/init/test_route.rt 
+PYTHONUNBUFFERED=1
+CONFIG_FILE=/home/blue/×ÀÃæ/hw-python/init/config-file.json
+DBAAS_SERVICE_PORT=6379
+DBAAS_SERVICE_HOST=service-ricplt-dbaas-tcp.ricplt.svc.cluster.local
