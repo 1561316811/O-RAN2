@@ -25,6 +25,7 @@ void signalHandler( int signum ) {
 
 int main(int argc, char *argv[]){
 
+	cout << "===================start manin===========================\n";
 	// Get the thread id
 	std::thread::id my_id = std::this_thread::get_id();
 	std::stringstream thread_id;

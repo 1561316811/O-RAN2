@@ -83,7 +83,9 @@ RUN cd dbaas/redismodule && \
     make install
 
 WORKDIR ${STAGE_DIR}
+# COPY ./ ${STAGE_DIR}
 RUN git clone https://gerrit.o-ran-sc.org/r/ric-plt/sdl
+# COPY ./sdl ${STAGE_DIR}/sdl
 RUN cd sdl && \
     ./autogen.sh && \
     ./configure && \
