@@ -114,9 +114,21 @@ RUN ls -al
 
 RUN export CPATH=$CPATH:/usr/local/include && \ 
     cd src && \
-#    source ./xapp_env.sh \
+    # source ./xapp_env.sh \
+    # ./xapp_env.sh \
     make clean && \
     make install 
+    
+# RUN export RMR_SEED_RT="routes.txt"
+# RUN export RMR_RTG_SVC="9999"
+# RUN export MSG_MAX_BUFFER="2072"
+# RUN export THREADS="1"
+# RUN export VERBOSE="0"
+# RUN export CONFIG_FILE="config/config-file.json"
+# RUN export XAPP_ID="3489-er492k-92389"
+# RUN export LOG_LEVEL="MDCLOG_ERR"
+RUN export DBAAS_SERVICE_HOST="service-ricplt-dbaas-tcp.ricplt.svc.cluster.local"
+RUN export DBAAS_SERVICE_PORT="6379"
 
 COPY ${SCHEMA_PATH}/* /etc/xapp/ 
 COPY init/init_script.py /etc/xapp/init_script.py
@@ -148,6 +160,8 @@ COPY --from=ricbuild /usr/local/include/rnib/rnibreader.a /usr/local/include/rni
 RUN ldconfig
 RUN sysctl -w net.ipv6.conf.lo.disable_ipv6=1
 
+
+
 ##ENV  PYTHONHOME=/opt/python3 \
 ##     PYTHONPATH=/opt/python3 \
 ENV  RMR_RTG_SVC="9999" \
@@ -156,6 +170,7 @@ ENV  RMR_RTG_SVC="9999" \
      VERBOSE=0 \
      CONFIG_FILE=/opt/ric/config/config-file.json
      
-      
+RUN mkdir -p /opt/ric/config
+COPY init/config-file.json /opt/ric/config/config-file.json 
 
 CMD python3 /etc/xapp/init_script.py $CONFIG_FILE
